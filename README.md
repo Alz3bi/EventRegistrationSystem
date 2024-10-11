@@ -12,7 +12,7 @@ The Event Registration System is a web application built with .NET 7 that allows
 
 ### 1. Clone the Repository
 ```bash
-git clone https://github.com/yourusername/EventRegistrationSystem.git cd EventRegistrationSystem
+git clone https://github.com/Alz3bi/EventRegistrationSystem.git cd EventRegistrationSystem
 ```
 
 ### 2. Configure Mailjet Integration
