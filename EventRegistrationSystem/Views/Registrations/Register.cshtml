@@ -1,0 +1,64 @@
+﻿@model EventRegistrationSystem.Models.Registration
+
+@{
+    ViewData["Title"] = "Register for Event";
+}
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <h1 class="mb-4">Register for @ViewBag.EventTitle</h1>
+            <form asp-action="Register" asp-controller="Registrations" class="needs-validation" novalidate>
+                <div class="mb-3">
+                    <label asp-for="ParticipantName" class="form-label"></label>
+                    <input asp-for="ParticipantName" class="form-control" required />
+                    <div class="invalid-feedback">
+                        Please enter your name.
+                    </div>
+                    <span asp-validation-for="ParticipantName" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="Email" class="form-label"></label>
+                    <input asp-for="Email" class="form-control" type="email" required />
+                    <div class="invalid-feedback">
+                        Please enter a valid email address.
+                    </div>
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+                <input type="hidden" asp-for="EventId" />
+                <div class="d-grid">
+                    <button type="submit" class="btn btn-primary btn-lg">Register</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        // Example starter JavaScript for disabling form submissions if there are invalid fields
+        (function () {
+            'use strict'
+
+            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+            var forms = document.querySelectorAll('.needs-validation')
+
+            // Loop over them and prevent submission
+            Array.prototype.slice.call(forms)
+                .forEach(function (form) {
+                    form.addEventListener('submit', function (event) {
+                        if (!form.checkValidity()) {
+                            event.preventDefault()
+                            event.stopPropagation()
+                        }
+
+                        form.classList.add('was-validated')
+                    }, false)
+                })
+        })()
+    </script>
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
+
